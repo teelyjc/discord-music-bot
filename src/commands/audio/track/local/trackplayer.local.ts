@@ -44,7 +44,7 @@ export default class LocalTrackPlayer implements TrackPlayer {
       channelId: member.voice.channelId,
       guildId: member.guild.id,
       adapterCreator: member.guild.voiceAdapterCreator,
-      selfDeaf: false,
+      selfDeaf: true,
     });
 
     this.connection.on(VoiceConnectionStatus.Disconnected, () => {

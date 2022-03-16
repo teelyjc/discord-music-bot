@@ -3,7 +3,6 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { Client, CommandInteraction, MessageEmbed } from 'discord.js';
 import axios from 'axios';
 import moment from 'moment';
-import Reply from '@src/commands/delete.interaction';
 
 export default class Covid implements Command {
 
@@ -35,11 +34,8 @@ export default class Covid implements Command {
       const replyMessage = this.getReplyEmbed(data);
       interaction.editReply({ embeds: [replyMessage] });
 
-      Reply.delete(interaction, 3);
-
     } catch (error) {
       interaction.editReply('Somethings went wrong, please try again later. ❌');
-      Reply.delete(interaction, 1);
       console.log(error.message);
     }
   }

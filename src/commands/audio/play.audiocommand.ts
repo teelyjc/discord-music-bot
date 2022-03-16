@@ -5,7 +5,6 @@ import { CommandInteraction, GuildMember, MessageEmbed } from 'discord.js';
 import { SongInfo } from '@src/commands/audio/info/info.song';
 import TrackInfo from '@src/commands/audio/track/info.track';
 import TrackPlayer from '@src/commands/audio/track/player.track';
-import Reply from '@src/commands/delete.interaction';
 
 export default class Play extends AudioCommand {
 
@@ -29,9 +28,7 @@ export default class Play extends AudioCommand {
     try {
       await interaction.deferReply();
 
-      if (!trackPlayer.isConnected()) {
-        trackPlayer.connect(executor);
-      }
+      if (!trackPlayer.isConnected()) trackPlayer.connect(executor);
 
       const track = new TrackInfo(song, executor);
       await track.loadResource();
@@ -40,12 +37,9 @@ export default class Play extends AudioCommand {
       const replyMessage = this.getReplyEmbed(executor, track.getInfo());
       interaction.editReply({ embeds: [replyMessage] });
 
-      Reply.delete(interaction, 1);
-
-      console.log(`Server '${executor.guild.name}' plays: ${track.getInfo().title}`);
+      console.log(`${executor.guild.name} requested song: ${track.getInfo().title}.`);
     } catch (error: any) {
       interaction.editReply('Somethings went wrong, please try again later. ❌');
-      Reply.delete(interaction, 1);
       console.log(`Something went wrong on song ${song}: ${error.name}`);
     }
   }
@@ -54,6 +48,12 @@ export default class Play extends AudioCommand {
     executor: GuildMember,
     songInfo: SongInfo,
   ): MessageEmbed {
+    let { author } = songInfo;
+    const { verify } = songInfo;
+
+    if (verify) {
+      author += ' ✓';
+    }
     return new MessageEmbed()
       .setColor('#0086cf')
       .setTitle(songInfo.title)
@@ -61,18 +61,23 @@ export default class Play extends AudioCommand {
       .setThumbnail(songInfo.thumbnail)
       .addFields(
         {
-          name: 'Duration ⏰',
-          value: songInfo.duration_locale,
+          name: 'requested by',
+          value: `${executor.displayName} #${executor.user.discriminator}`,
           inline: true,
         },
         {
-          name: 'Requested By 🙆‍♂️',
-          value: `${executor.displayName} #${executor.user.discriminator}`,
+          name: 'views',
+          value: `${songInfo.views.toLocaleString()}`,
+          inline: true,
+        },
+        {
+          name: 'duration',
+          value: `${songInfo.duration_locale}`,
           inline: true,
         },
       )
       .setTimestamp()
-      .setFooter({ text: songInfo.author, iconURL: songInfo.author_avatar });
+      .setFooter({ text: author, iconURL: songInfo.author_avatar });
   }
 
 }

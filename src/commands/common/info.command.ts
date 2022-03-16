@@ -3,7 +3,6 @@ import { Client, CommandInteraction, MessageEmbed } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import Command, { CommandInfo } from '@src/commands/command.common';
 import process from 'process';
-import Reply from '@src/commands/delete.interaction';
 
 export default class Info implements Command {
 
@@ -27,11 +26,8 @@ export default class Info implements Command {
       const repleMessage = this.getReplyEmbed();
       interaction.editReply({ embeds: [repleMessage] });
 
-      Reply.delete(interaction, 1);
-
     } catch (error) {
       interaction.editReply('Somethings went wrong, please try again later. ❌');
-      Reply.delete(interaction, 1);
       console.log(error.message);
     }
   }

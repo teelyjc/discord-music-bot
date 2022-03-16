@@ -38,6 +38,7 @@ export default class DiscordBot {
   }
 
   public async startBot(): Promise<void> {
+    console.log('Loading all resource..');
     this.client.on('ready', await this.onReady.bind(this));
     this.client.on('interactionCreate', await this.onCommand.bind(this));
     this.client.login(this.TOKEN);

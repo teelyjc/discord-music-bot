@@ -5,10 +5,12 @@ export type SongInfo = {
   title: string,
   thumbnail: string,
   duration: number,
+  views: number,
   duration_locale: string,
   author: string,
   author_avatar: string,
   author_url: string,
+  verify: boolean,
 }
 
 export default class GetSongInfo {
@@ -19,10 +21,12 @@ export default class GetSongInfo {
       title: null,
       thumbnail: null,
       duration: null,
+      views: null,
       duration_locale: null,
       author: null,
       author_avatar: null,
       author_url: null,
+      verify: null,
     };
 
     if (song instanceof Video) {
@@ -30,9 +34,11 @@ export default class GetSongInfo {
       info.title = song.title;
       info.thumbnail = song.thumbnail.url;
       info.duration = song.durationInSec;
+      info.views = song.views;
       info.author = song.channel.name;
       info.author_avatar = song.channel.icon.url;
       info.author_url = song.channel.url;
+      info.verify = song.channel.verified;
     }
 
     info.duration_locale = this.getLocaleDuration(info.duration);

@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { CommandInteraction, GuildMember } from 'discord.js';
 
-import Reply from '@src/commands/delete.interaction';
 import Command, { CommandInfo } from '@src/commands/command.common';
 import TrackPlayer from '@src/commands/audio/track/player.track';
 import BotInstance from '@src/commands/audio/info/instance.discordbot';
@@ -21,8 +20,7 @@ export default abstract class AudioCommand implements Command {
     const voiceChannel = executor.voice.channel;
 
     if (!voiceChannel) {
-      interaction.reply('Please join voice channel to use voice commands. 🙏🏻');
-      Reply.delete(interaction, 1);
+      interaction.reply('Please join voice channel to use voice commands.');
       return;
     }
 

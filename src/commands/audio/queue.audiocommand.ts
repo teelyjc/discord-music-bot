@@ -6,7 +6,6 @@ import TrackPlayer from '@src/commands/audio/track/player.track';
 import { CommandInfo } from '@src/commands/command.common';
 import GetSongInfo from '@src/commands/audio/info/info.song';
 import TrackInfo from '@src/commands/audio/track/info.track';
-import Reply from '@src/commands/delete.interaction';
 
 export default class Queue extends AudioCommand {
 
@@ -24,16 +23,13 @@ export default class Queue extends AudioCommand {
   ): Promise<void> {
     try {
       if (trackPlayer.getTracks().length === 0) {
-        interaction.reply('no track playing ! 🙅🏻‍♀️');
-        Reply.delete(interaction, 1);
+        interaction.reply('no track playing !');
         return;
       }
 
       interaction.reply({ embeds: [this.getTrackListEmbed(trackPlayer)] });
-      Reply.delete(interaction, 1);
     } catch (error: any) {
       interaction.editReply('Somethings went wrong, please try again later. ❌');
-      Reply.delete(interaction, 1);
       console.log(error.message);
     }
   }

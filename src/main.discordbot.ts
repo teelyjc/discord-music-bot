@@ -1,4 +1,10 @@
-import { Client, Intents, Interaction } from 'discord.js';
+import {
+  Client,
+  Intents,
+  Interaction,
+  Message,
+} from 'discord.js';
+
 import { REST as DiscordAPI } from '@discordjs/rest';
 
 import CommandManager from '@src/commands.discordbot';
@@ -40,12 +46,30 @@ export default class DiscordBot {
   public async startBot(): Promise<void> {
     console.log('Loading all resource..');
     this.client.on('ready', await this.onReady.bind(this));
+    this.client.on('messageCreate', this.onMessage.bind(this));
     this.client.on('interactionCreate', await this.onCommand.bind(this));
     this.client.login(this.TOKEN);
   }
 
+  public onMessage(message: Message) {
+    if (message.content === ';!;interupt.restart!') {
+      this.client.destroy();
+      new DiscordBot(this.TOKEN).startBot();
+    }
+  }
+
   protected async onReady(): Promise<void> {
     console.log(`Logged in as ${this.client.user.tag}!`);
+
+    const setPrecense = () => {
+      this.client.user.setStatus('idle');
+      this.client.user.setPresence(
+        { activities: [{ name: '/play', type: 'LISTENING' }] },
+      );
+    };
+
+    setPrecense();
+    setInterval(setPrecense, 5 * 60 * 1000);
 
     await this.commandManager.registerCommand([
       new Info(this.client),

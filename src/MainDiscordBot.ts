@@ -21,8 +21,8 @@ export default class MainDiscordBot extends DiscordBot {
   }
 
   protected async onDisconnect(): Promise<void> {
-    this.client.destroy();
     console.info('See you again, Disconnecting..');
+    this.client.destroy();
     process.exit();
   }
 

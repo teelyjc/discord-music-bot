@@ -1,0 +1,41 @@
+{
+  "name": "my_playground",
+  "version": "1.0.0",
+  "description": "typescript playground",
+  "repository": "https://github.com/teely44y/playground",
+  "author": "Tannatee Juchan",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.6.2",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals": "^3.0.0",
+    "yarn-run-all": "^3.1.1"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.30.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.2.5"
+  },
+  "scripts": {
+    "build:dev": "webpack --mode=development --watch",
+    "start:dev": "nodemon dist/app.js -q -w dist -e js",
+    "dev": "npm-run-all --silent --parallel build:dev start:dev",
+    "build": "webpack --mode=production",
+    "start": "node dist/app.js",
+    "lint": "eslint . --ext .ts"
+  },
+  "license": "MIT",
+  "private": true
+}

@@ -24,7 +24,6 @@ export default class MainDiscordBot extends DiscordBot {
 
     setInterval(() => {
       this.client.user.setPresence(this.Presence);
-      console.info('Reset Presence.');
     }, 5 * 60 * 1000);
 
     this.registerCommand();

@@ -1,8 +1,8 @@
 {
-  "name": "my_playground",
-  "version": "1.1.2",
-  "description": "typescript playground",
-  "repository": "https://github.com/teely44y/playground",
+  "name": "discordbot",
+  "version": "1.1.5",
+  "description": "discord music bot",
+  "repository": "https://github.com/teely44y/DiscordBot",
   "author": "Tannatee Juchan",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.14.0",
@@ -42,5 +42,5 @@
     "lint": "eslint . --ext .ts"
   },
   "license": "MIT",
-  "private": true
+  "private": false
 }

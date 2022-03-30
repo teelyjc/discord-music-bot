@@ -24,6 +24,8 @@ module.exports = {
 
     'import/no-unresolved': 'off',
 
+    'no-unused-vars': 'off',
+
     'no-undef': 'off',
 
     'padded-blocks': [

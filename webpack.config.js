@@ -6,7 +6,7 @@ const distPath = path.resolve(__dirname, 'dist');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: path.resolve(srcPath, './__loader__/DiscordBotLoader.ts'),
+  entry: path.resolve(srcPath, './DiscordBotLoader.js'),
   module: {
     rules: [
       {

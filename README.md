@@ -55,6 +55,6 @@
     - no commands available now
 
 ## Special Thanks
-  - [RiflowTH]('https://github.com/riflowth') -> my Boss.
+  - [RiflowTH](https://github.com/riflowth) -> my Boss.
   
   - [Tier-Discord-Bot](https://github.com/riflowth/tier-discord-bot) -> base source.

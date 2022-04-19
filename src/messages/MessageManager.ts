@@ -1,46 +1,37 @@
-import { Client, Message } from 'discord.js';
-import MessageCommand from '@src/messages/Message';
+import { Message } from 'discord.js';
+import { MessageMSG } from '@src/interfaces/messages/Message';
 
-export class MessageManager {
-
-  protected readonly client: Client;
+export default class MessageManager {
 
   protected readonly prefix: string;
 
-  private messageLabel = new Map<string, MessageCommand>();
+  protected commandLabel: Map<string[], MessageMSG> = new Map<string[], MessageMSG>();
 
-  public constructor(client: Client, prefix: string) {
-    this.client = client;
+  public constructor(prefix: string) {
     this.prefix = prefix;
   }
 
-  public async registerMessage(messages: MessageCommand[]): Promise<void> {
-    const messagesInfo = messages.map((message) => message.getInfo());
+  public register(commands: MessageMSG[]): void {
+    const allCommand = commands.map((command) => command.getName()[0]);
 
-    messages.forEach((message) => {
-      this.messageLabel.set(message.getInfo(), message);
+    commands.forEach((command) => {
+      this.commandLabel.set(command.getName(), command);
     });
 
-    console.info(`Messages: ${messagesInfo.join(', ')}`);
-    console.info(`Registered ${messages.length} messages successfully`);
+    console.log(`✅ Registered ${this.commandLabel.size} commands in cache-memory successful. !`);
+    console.log(`✅ Avaliable commands: ${allCommand.join(', ')}`);
   }
 
-  public async executeMessage(message: Message): Promise<void> {
+  public execute(message: Message): void {
     if (!message.content.startsWith(this.prefix)) return;
 
     const split: string[] = message.content.split(' ');
-    if (split.length === 0) return;
+    const excludePrefix: string = split[0].substring(this.prefix.length);
 
-    const commandExcludePrefix = split[0].substring(this.prefix.length);
-    const command = this.messageLabel.get(commandExcludePrefix);
-
-    if (!command) return;
-
-    try {
-      command.execute(commandExcludePrefix, split, message);
-    } catch (error) {
-      console.error(error.message);
-    }
+    this.commandLabel.forEach((cmd) => {
+      if (!cmd.getName().includes(excludePrefix)) return;
+      cmd.execute(message, split, excludePrefix);
+    });
   }
 
 }

@@ -30,9 +30,9 @@ export default class DatabaseManager {
     const { connection } = await mongoose.connect(this.MONGO_URI);
 
     if (connection) {
-      console.log('MongoDB connection established.');
+      console.log('✅ MongoDB connection established.');
     } else {
-      console.log('Can\'t connect to MongoDB !');
+      console.log('❌ Can\'t connect to MongoDB !');
     }
   }
 

@@ -58,9 +58,9 @@ export default class CommandManager {
           .length;
 
         if (addition) {
-          console.log(`Registered new ${addition} commands to Discord successfully`);
+          console.log(`✅ Registered new ${addition} commands to Discord successfully`);
         } else {
-          console.log(`Unregistered ${deletion} commands from Discord successfully`);
+          console.log(`✅ Unregistered ${deletion} commands from Discord successfully`);
         }
       }
 
@@ -68,8 +68,8 @@ export default class CommandManager {
         this.commandByLabel.set(command.getInfo().name, command);
       });
 
-      console.log(`Commands: ${commandsName.join(', ')}`);
-      console.log(`Registered ${commands.length} commands in-memory successfully`);
+      console.log(`✅ Commands: ${commandsName.join(', ')}`);
+      console.log(`✅ Registered ${commands.length} commands in-memory successfully`);
     } catch (error) {
       console.error(error);
     }

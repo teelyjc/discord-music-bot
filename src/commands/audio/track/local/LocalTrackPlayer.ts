@@ -3,6 +3,7 @@ import {
   AudioPlayer,
   AudioPlayerStatus,
   createAudioPlayer,
+  DiscordGatewayAdapterCreator,
   joinVoiceChannel,
   VoiceConnection,
   VoiceConnectionStatus,
@@ -43,7 +44,7 @@ export default class LocalTrackPlayer implements TrackPlayer {
     this.connection = joinVoiceChannel({
       channelId: member.voice.channelId,
       guildId: member.guild.id,
-      adapterCreator: member.guild.voiceAdapterCreator,
+      adapterCreator: member.guild.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator,
       selfDeaf: true,
     });
 

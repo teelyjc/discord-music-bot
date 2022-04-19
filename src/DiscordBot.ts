@@ -8,7 +8,8 @@ import {
 import { REST as DiscordAPI } from '@discordjs/rest';
 import CommandManager from '@src/commands/CommandManager';
 import TrackPlayerManager from '@src/commands/audio/track/TrackPlayerManager';
-import { MessageManager } from '@src/messages/MessageManager';
+import MessageManager from '@src/messages/MessageManager';
+import DatabaseManager from '@src/DatabaseManager';
 
 export default abstract class DiscordBot {
 
@@ -27,6 +28,8 @@ export default abstract class DiscordBot {
 
   private readonly trackPlayerManager: TrackPlayerManager = new TrackPlayerManager();
 
+  protected readonly databaseManager: DatabaseManager;
+
   protected readonly commandManager: CommandManager;
 
   protected readonly messageManager: MessageManager;
@@ -35,8 +38,9 @@ export default abstract class DiscordBot {
     this.TOKEN = token;
     this.client = new Client({ intents: this.Intents });
     this.discordAPI = new DiscordAPI({ version: '9' }).setToken(token);
+    this.databaseManager = new DatabaseManager();
     this.commandManager = new CommandManager(this.client, this.discordAPI);
-    this.messageManager = new MessageManager(this.client, ';;');
+    this.messageManager = new MessageManager(';;');
   }
 
   public async startBot(): Promise<void> {

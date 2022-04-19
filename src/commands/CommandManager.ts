@@ -2,7 +2,7 @@ import { Client, CommandInteraction } from 'discord.js';
 import { REST as DiscordAPI } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 
-import Command from '@src/commands/Command';
+import Command from '@src/interfaces/commands/Command';
 
 export default class CommandManager {
 

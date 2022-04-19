@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import AudioCommand from '@src/commands/audio/AudioCommand';
-import TrackPlayer from '@src/commands/audio/track/TrackPlayer';
-import { CommandInfo } from '@src/commands/Command';
+import TrackPlayer from '@src/interfaces/commands/Track/TrackPlayer';
+import { CommandInfo } from '@src/interfaces/commands/Command';
 import { CommandInteraction, GuildMember } from 'discord.js';
 
 export default class Clear extends AudioCommand {

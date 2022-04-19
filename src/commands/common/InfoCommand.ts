@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { Client, CommandInteraction, MessageEmbed } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
-import Command, { CommandInfo } from '@src/commands/Command';
+import Command, { CommandInfo } from '@src/interfaces/commands/Command';
 import process from 'process';
 
 export default class Info implements Command {

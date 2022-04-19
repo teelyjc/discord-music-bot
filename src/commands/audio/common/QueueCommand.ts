@@ -2,9 +2,9 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandInteraction, GuildMember, MessageEmbed } from 'discord.js';
 
 import AudioCommand from '@src/commands/audio/AudioCommand';
-import TrackPlayer from '@src/commands/audio/track/TrackPlayer';
-import { CommandInfo } from '@src/commands/Command';
-import GetSongInfo from '@src/commands/audio/info/GetSongInfo';
+import TrackPlayer from '@src/interfaces/commands/Track/TrackPlayer';
+import { CommandInfo } from '@src/interfaces/commands/Command';
+import GetSongInfo from '@src/interfaces/commands/info/GetSongInfo';
 import TrackInfo from '@src/commands/audio/track/TrackInfo';
 
 export default class Queue extends AudioCommand {

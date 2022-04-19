@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { CommandInteraction, GuildMember } from 'discord.js';
 
-import Command, { CommandInfo } from '@src/commands/Command';
-import TrackPlayer from '@src/commands/audio/track/TrackPlayer';
-import BotInstance from '@src/commands/audio/info/BotInstance';
+import Command, { CommandInfo } from '@src/interfaces/commands/Command';
+import TrackPlayer from '@src/interfaces/commands/Track/TrackPlayer';
+import BotInstance from '@src/interfaces/commands/info/BotInstance';
 
 export default abstract class AudioCommand implements Command {
 

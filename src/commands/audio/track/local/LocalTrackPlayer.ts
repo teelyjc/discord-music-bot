@@ -10,7 +10,7 @@ import {
 } from '@discordjs/voice';
 import { GuildMember } from 'discord.js';
 
-import TrackPlayer from '@src/commands/audio/track/TrackPlayer';
+import TrackPlayer from '@src/interfaces/commands/Track/TrackPlayer';
 import TrackInfo from '@src/commands/audio/track/TrackInfo';
 
 export default class LocalTrackPlayer implements TrackPlayer {

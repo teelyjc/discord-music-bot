@@ -1,4 +1,4 @@
-import Command, { CommandInfo } from '@src/commands/Command';
+import Command, { CommandInfo } from '@src/interfaces/commands/Command';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { Client, CommandInteraction, MessageEmbed } from 'discord.js';
 import axios from 'axios';

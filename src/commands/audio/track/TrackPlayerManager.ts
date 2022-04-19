@@ -1,4 +1,4 @@
-import TrackPlayer from '@src/commands/audio/track/TrackPlayer';
+import TrackPlayer from '@src/interfaces/commands/Track/TrackPlayer';
 import LocalTrackPlayer from '@src/commands/audio/track/local/LocalTrackPlayer';
 
 export default class TrackPlayerManager {

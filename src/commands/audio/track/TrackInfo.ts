@@ -2,7 +2,7 @@ import { AudioResource, createAudioResource } from '@discordjs/voice';
 import { GuildMember } from 'discord.js';
 import * as PlayDL from 'play-dl';
 
-import GetSongInfo, { SongInfo } from '@src/commands/audio/info/GetSongInfo';
+import GetSongInfo, { SongInfo } from '@src/interfaces/commands/info/GetSongInfo';
 
 export default class TrackInfo {
 

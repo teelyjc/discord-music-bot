@@ -1,10 +1,10 @@
 import AudioCommand from '@src/commands/audio/AudioCommand';
-import { CommandInfo } from '@src/commands/Command';
+import { CommandInfo } from '@src/interfaces/commands/Command';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandInteraction, GuildMember, MessageEmbed } from 'discord.js';
-import { SongInfo } from '@src/commands/audio/info/GetSongInfo';
+import { SongInfo } from '@src/interfaces/commands/info/GetSongInfo';
 import TrackInfo from '@src/commands/audio/track/TrackInfo';
-import TrackPlayer from '@src/commands/audio/track/TrackPlayer';
+import TrackPlayer from '@src/interfaces/commands/Track/TrackPlayer';
 
 export default class Play extends AudioCommand {
 

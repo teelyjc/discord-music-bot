@@ -2,9 +2,9 @@ import { CommandInteraction, GuildMember, MessageEmbed } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
 import AudioCommand from '@src/commands/audio/AudioCommand';
-import TrackPlayer from '@src/commands/audio/track/TrackPlayer';
-import { SongInfo } from '@src/commands/audio/info/GetSongInfo';
-import { CommandInfo } from '@src/commands/Command';
+import TrackPlayer from '@src/interfaces/commands/Track/TrackPlayer';
+import { SongInfo } from '@src/interfaces/commands/info/GetSongInfo';
+import { CommandInfo } from '@src/interfaces/commands/Command';
 
 export default class Skip extends AudioCommand {
 

@@ -13,7 +13,7 @@ export default class MainDiscordBot extends DiscordBot {
   /* PresenceData config here */
   private readonly Presence: PresenceData = {
     activities: [
-      { name: '/play', type: 'LISTENING' }],
+      { name: '/play', type: 'PLAYING' }],
     status: 'online',
   };
 

@@ -1,6 +1,6 @@
 import { Client, Intents } from 'discord.js';
 import { REST as DiscordAPI } from '@discordjs/rest';
-import CommandManager from '@src/command/CommandManager';
+import CommandManager from '@src/commands/CommandManager';
 
 export default abstract class MainDiscordBot {
 

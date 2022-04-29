@@ -1,5 +1,5 @@
 import { REST as DiscordAPI } from '@discordjs/rest';
-import Command from '@src/command/Command';
+import Command from '@src/commands/Command';
 import { Client, CommandInteraction } from 'discord.js';
 import { Routes } from 'discord-api-types/v9';
 

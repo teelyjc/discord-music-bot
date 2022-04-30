@@ -110,6 +110,7 @@ export default class DiscordPlayer implements Player {
   public clearTracks(): void {
     this.tracks = new Array<Track>();
     this.stop();
+    this.disconnect();
   }
 
   public getTracks(): Track[] {

@@ -13,7 +13,7 @@ export default class PlayCommand extends AudioCommand {
       .setName('play')
       .setDescription('add music in queue or play')
       .addStringOption((option) => option
-        .setName('keyword')
+        .setName('song')
         .setDescription('song name or link')
         .setRequired(true))
       .toJSON();
@@ -24,7 +24,7 @@ export default class PlayCommand extends AudioCommand {
     executor: GuildMember,
     player: Player,
   ): Promise<void> {
-    const keyword = interaction.options.getString('keyword');
+    const keyword = interaction.options.getString('song');
     try {
       await interaction.deferReply();
 

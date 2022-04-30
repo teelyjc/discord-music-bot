@@ -28,6 +28,10 @@ module.exports = {
 
     'no-undef': 'off',
 
+    'no-array-constructor': 'off',
+
+    camelcase: 'off',
+
     'padded-blocks': [
       'error',
       { classes: 'always' },

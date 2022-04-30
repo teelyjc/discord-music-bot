@@ -1,4 +1,7 @@
-import { Client, Intents, Interaction } from 'discord.js';
+import {
+  Client, Guild, Intents, Interaction,
+} from 'discord.js';
+
 import { REST as DiscordAPI } from '@discordjs/rest';
 import CommandManager from '@src/commands/CommandManager';
 import PlayerManger from '@src/audio/PlayerManager';
@@ -35,14 +38,21 @@ export default abstract class MainDiscordBot implements DiscordInstance {
 
     this.client.on('ready', this.onReady.bind(this));
     this.client.on('interactionCreate', this.onInteractionCreate.bind(this));
+    this.client.on('guildCreate', this.onGuildCreate.bind(this));
   }
 
   public getPlayerManager(): PlayerManger {
     return this.playerManager;
   }
 
+  public getClient(): Client {
+    return this.client;
+  }
+
   protected abstract onReady(): void;
 
   protected abstract onInteractionCreate(interaction: Interaction): void;
+
+  protected abstract onGuildCreate(guild: Guild): void;
 
 }

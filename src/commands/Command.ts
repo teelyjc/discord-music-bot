@@ -10,6 +10,6 @@ export type CommandInfo = {
 export default interface Command {
   getInfo(): CommandInfo;
 
-  execute(interaction: CommandInteraction, executor?: GuildMember): Promise<void>;
+  execute(interaction: CommandInteraction): Promise<void>;
 
 }

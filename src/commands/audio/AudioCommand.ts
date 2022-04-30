@@ -23,6 +23,7 @@ export default abstract class AudioCommand implements Command {
 
       if (!voiceChannel) {
         await interaction.reply('Please join voice channel to use voice commands.');
+        return;
       }
 
       const playerManger: PlayerManger = this.discordInstance.getPlayerManager();
